@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  div {
+    border: 0.5px solid #000;
+    width: 300px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    div {
+      border: 0.5px solid #000;
+      width: auto;
+      height: 50px;
+      padding: 20px;
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+}
