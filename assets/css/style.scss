@@ -4,20 +4,23 @@ body {
 }
 
 main {
-  display: flex;
   height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   div {
     border: 0.5px solid #000;
     width: 300px;
     display: grid;
     grid-template-columns: auto auto auto;
     div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 0.5px solid #000;
       width: auto;
-      height: 50px;
-      padding: 20px;
+      height: 80px;
       font-size: 30px;
       text-align: center;
     }
