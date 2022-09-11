@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #f1f1f1;
 }
 
 main {
@@ -21,8 +22,11 @@ main div div {
   justify-content: center;
   align-items: center;
   border: 0.5px solid #000;
-  width: auto;
+  width: 98px;
   height: 80px;
   font-size: 30px;
   text-align: center;
+}
+main p {
+  height: 20px;
 }/*# sourceMappingURL=style.css.map */

@@ -5,8 +5,10 @@ let tictactoe = [
 ];
 
 let turnCounter = 0;
+let noWinnerCounter = 0;
 
 const clickHandler = (boxName) => {
+  noWinnerCounter++;
   const setOX = (value) => {
     if (boxName === "box1") {
       tictactoe[0][0] = value;
@@ -30,13 +32,11 @@ const clickHandler = (boxName) => {
   };
 
   if (!turnCounter) {
-    console.log(document.getElementById(boxName));
     document.getElementById(boxName).innerHTML = "X";
     turnCounter = !turnCounter;
     setOX("X");
     winCondition("X");
     document.getElementById(boxName).removeAttribute("onclick");
-    console.log(tictactoe);
   } else {
     document.getElementById(boxName).innerHTML = "O";
     turnCounter = !turnCounter;
@@ -46,48 +46,68 @@ const clickHandler = (boxName) => {
     document.getElementById(boxName).removeAttribute("onclick");
   }
 };
-
+const noClickAfterWin = () => {
+  console.log("here");
+  const boxes = document.querySelectorAll("div");
+  for (let i = 0; i < boxes.length; i++) {
+    boxes[i].removeAttribute("onclick");
+  }
+};
 const winCondition = (element) => {
   const messageElement = document.querySelector("p");
   if (
     tictactoe[0][0] === tictactoe[0][1] &&
     tictactoe[0][1] == tictactoe[0][2]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
   } else if (
     tictactoe[1][0] === tictactoe[1][1] &&
     tictactoe[1][1] == tictactoe[1][2]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
   } else if (
     tictactoe[2][0] === tictactoe[2][1] &&
     tictactoe[2][1] == tictactoe[2][2]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
   } else if (
     tictactoe[0][0] === tictactoe[1][0] &&
     tictactoe[1][0] == tictactoe[2][0]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
   } else if (
     tictactoe[0][1] === tictactoe[1][1] &&
     tictactoe[1][1] == tictactoe[2][1]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
   } else if (
     tictactoe[0][2] === tictactoe[1][2] &&
     tictactoe[1][2] == tictactoe[2][2]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
   } else if (
     tictactoe[0][0] === tictactoe[1][1] &&
     tictactoe[1][1] == tictactoe[2][2]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
   } else if (
     tictactoe[0][2] === tictactoe[1][1] &&
     tictactoe[1][1] == tictactoe[2][0]
   ) {
-    messageElement.textContent = `${element} is the winner`;
+    messageElement.innerHTML = `${element} is the winner. <button onclick="restart()">Restart</button>`;
+    noClickAfterWin();
+  } else if (noWinnerCounter === 9) {
+    messageElement.innerHTML = `Its a draw. <button onclick="restart()">Restart</button>`;
   }
+};
+
+const restart = () => {
+  window.location.reload();
 };
